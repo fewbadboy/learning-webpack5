@@ -1,0 +1,9 @@
+{
+  "name": "demo-webpack5",
+  "version": "1.0.0",
+  "description": "webpack5 learning",
+  "author": "fewabdboy <renekton.king@qq.com>",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
