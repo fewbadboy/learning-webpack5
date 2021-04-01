@@ -2,8 +2,19 @@
   "name": "demo-webpack5",
   "version": "1.0.0",
   "description": "webpack5 learning",
+  "keywords": ["webpack5"],
+  "homepage": "",
   "author": "fewabdboy <renekton.king@qq.com>",
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "scripts": {
+    
+  },
+  "dependencies": {
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/fewbadboy/demo-webpack5/issues",
+    "email": "renekton.king@qq.com"
+  }
 }
