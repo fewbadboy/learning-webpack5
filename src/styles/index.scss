@@ -1,0 +1,56 @@
+@import './variables.scss';
+
+.red {
+    color: red;
+}
+
+.btn {
+    &-primary {
+        font: {
+            size: 14px;
+            weight: bold;
+        }
+        color: $color-primary;
+        &:hover{
+            color: $color-primary-hover;
+        }
+    }
+}
+
+.danger{
+    @extend .red
+}
+
+p {
+    @if 1 + 1 == 2 { border: 1px solid greenyellow};
+}
+
+p {
+    @if  $type == ocean {
+        color: blue;
+    } @else if $type == matador {
+        color: red;
+    } @else {
+        color: black;
+    }
+}
+
+@for $i from 1 through 3 {
+    .item-#{$i} {
+        width: 2em * $i;
+    }
+}
+
+@each $animal in puma {
+    .#{$animal}-icon {
+        background-image: url('/src/images/#{$animal}.png');
+    }
+}
+
+$i: 6;
+@while $i > 0 {
+    .item#{$i} {
+        width: 2em * $i;
+    }
+    $i: $i - 2;
+}

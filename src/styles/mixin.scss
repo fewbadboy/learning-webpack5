@@ -1,0 +1,7 @@
+@mixin name($selector) {
+    #{$selector}:before {
+        content: 'Hi, Google users!'
+    }
+}
+
+@include name('.head')
