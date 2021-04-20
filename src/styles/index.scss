@@ -1,6 +1,12 @@
 @import './variables.scss';
 
+
+@font-face {
+    font-family: 'LongCang-Regular';
+    src: url('@src/fonts/LongCang-Regular.ttf');
+}
 .red {
+    font-family: 'LongCang-Regular';
     color: red;
 }
 
