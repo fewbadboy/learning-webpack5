@@ -20,7 +20,8 @@ module.exports = {
         }
     },
     devServer: {
-        contentBase: './dist'
+        contentBase: './dist',
+        hot: true
     },
     module: {
         rules: [
@@ -72,7 +73,7 @@ module.exports = {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'chunk-libs',
                     priority: 10,
-                    chunks: 'all',
+                    chunks: 'initial',
                 }
             }
         },
