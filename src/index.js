@@ -2,6 +2,7 @@ import _ from 'lodash'
 import './styles/index.scss'
 
 import printMe from './print.js'
+import puma from './images/puma.png'
 
 import csv from './Data/data.csv'
 import xml from './Data/data.xml'
@@ -20,8 +21,14 @@ function componnet() {
     element.onclick = printMe
     return element
 }
+function componnetPng() {
+    const element = document.createElement('img')
+    element.src = puma
+    return element
+}
 
 document.body.appendChild(componnet())
+document.body.appendChild(componnetPng())
 
 if (module.hot) {
     module.hot.accept('./print.js', function(){
