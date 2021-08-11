@@ -1,13 +1,13 @@
 import _ from 'lodash'
-import './styles/index.scss'
+import '@/styles/index.scss'
 
-import printMe from './print.js'
-import puma from './images/puma.png'
+import printMe from '@/common/print.js'
+import puma from '@/images/puma.png'
 
-import csv from './Data/data.csv'
-import xml from './Data/data.xml'
-import yaml from './Data/data.yaml'
-import json from './Data/data.json5'
+import csv from '@/Data/data.csv'
+import xml from '@/Data/data.xml'
+import yaml from '@/Data/data.yaml'
+import json from '@/Data/data.json5'
 console.log(yaml.title); // output `YAML Example`
 
 console.log(json.title); // output `JSON5 Example`
@@ -30,9 +30,4 @@ function componnetPng() {
 document.body.appendChild(componnet())
 document.body.appendChild(componnetPng())
 
-if (module.hot) {
-    module.hot.accept('./print.js', function(){
-        console.log('Accepting the updated printMe module!')
-        printMe()
-    })
-}
+localStorage.setItem('token','auth9527')

@@ -16,6 +16,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.3",
     "csv-loader": "^3.0.3",
     "fibers": "^5.0.0",

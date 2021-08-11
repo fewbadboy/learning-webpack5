@@ -1,14 +1,17 @@
+const webpack = require('webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const yaml = require('yamljs')
 const json5 = require('json5')
+const { web } = require('webpack')
 
 module.exports = {
     mode: 'development',
     entry: {
-        before: './src/before.js',
-        index: './src/index.js',
+        about: './src/pages/about/about.js',
+        index: './src/pages/index/index.js',
     },
     output: {
         filename: '[name].bundle.js',
@@ -16,7 +19,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            '@src': path.resolve(__dirname, 'src')
+            '@': path.resolve(__dirname, 'src')
         }
     },
     devServer: {
@@ -80,8 +83,27 @@ module.exports = {
         runtimeChunk: 'single'
     },
     plugins: [
+        new CleanWebpackPlugin(),
+        new webpack.BannerPlugin({
+            banner: `Author: fewbadboy \nTime: ${new Date().toLocaleString()}`
+        }),
+        new webpack.DefinePlugin({
+            BASE_URL: '/'
+        }),
         new HtmlWebpackPlugin({
-            title: 'webpack5'
+            title: 'index',
+            filename: 'index.html',
+            template: './public/index.html',
+            chunks: ['index'],
+        }),
+        new HtmlWebpackPlugin({
+            title: 'about',
+            filename: 'about.html',
+            template: './public/about.html',
+            chunks: ['about'],
+        }),
+        new webpack.DefinePlugin({
+            VERSION: JSON.stringify('5fa3b9')
         })
     ]
 }
