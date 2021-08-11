@@ -10,6 +10,7 @@
   "scripts": {
     "start": "webpack serve --open",
     "build": "webpack",
+    "lint": "eslint --ext .js,.vue src",
     "test": "echo \"Error: for test\" && exit 1"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.3",
     "csv-loader": "^3.0.3",
+    "eslint": "^7.32.0",
     "fibers": "^5.0.0",
     "html-webpack-plugin": "^5.3.1",
     "json5": "^2.2.0",
