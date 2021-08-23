@@ -7,6 +7,7 @@ const yaml = require('yamljs')
 const json5 = require('json5')
 
 module.exports = {
+  name: 'Admin Webpack',
   mode: 'development',
   entry: {
     about: './src/pages/about/about.js',
