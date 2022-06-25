@@ -1,6 +1,6 @@
+const path = require('path')
 const { BannerPlugin, DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const yaml = require('yamljs')
@@ -8,14 +8,15 @@ const json5 = require('json5')
 
 module.exports = {
   name: 'Admin Webpack',
-  mode: 'development',
+  mode: 'development', // production
   entry: {
     about: './src/pages/about/about.js',
-    index: './src/pages/index/index.js'
+    main: './src/pages/index/index.js'
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    publicPath: '',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js'
   },
   resolve: {
     alias: {
@@ -29,11 +30,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/i,
+        test: /\.s?css$/i,
         use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
+          { loader: 'style-loader' },
+          { 
+            loader: 'css-loader',
+            options: {
+              // do
+            }
+          },
+          { loader: 'sass-loader' }
         ]
       },
       {
@@ -97,7 +103,7 @@ module.exports = {
       title: 'index',
       filename: 'index.html',
       template: './public/index.html',
-      chunks: ['index']
+      chunks: ['main']
     }),
     new HtmlWebpackPlugin({
       title: 'about',
