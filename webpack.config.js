@@ -14,7 +14,6 @@ module.exports = {
     main: './src/pages/index/index.js'
   },
   output: {
-    publicPath: '',
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
   },
@@ -24,8 +23,8 @@ module.exports = {
     }
   },
   devServer: {
-    contentBase: './dist',
-    hot: true
+    open: true,
+    port: 8080
   },
   module: {
     rules: [
@@ -33,7 +32,7 @@ module.exports = {
         test: /\.s?css$/i,
         use: [
           { loader: 'style-loader' },
-          { 
+          {
             loader: 'css-loader',
             options: {
               // do

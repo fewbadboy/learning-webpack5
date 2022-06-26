@@ -8,28 +8,30 @@
   "homepage": "",
   "author": "fewbadboy <renekton.king@qq.com>",
   "scripts": {
-    "start": "webpack serve --open",
+    "start": "webpack serve",
     "build": "webpack",
+    "profile": "webpack --profile --json=compilation-state.json",
     "lint": "eslint --ext .js,.vue src",
+    "clean": "rm -rf dist",
     "test": "echo \"Error: for test\" && exit 1"
   },
   "dependencies": {
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
-    "css-loader": "^5.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
     "csv-loader": "^3.0.3",
-    "eslint": "^7.32.0",
+    "eslint": "^8.18.0",
     "fibers": "^5.0.0",
     "html-webpack-plugin": "^5.3.1",
     "json5": "^2.2.0",
     "sass": "^1.32.10",
-    "sass-loader": "^11.0.1",
-    "style-loader": "^2.0.0",
+    "sass-loader": "^13.0.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2",
+    "webpack-dev-server": "^4.9.2",
     "xml-loader": "^1.2.1",
     "yamljs": "^0.3.0"
   },
