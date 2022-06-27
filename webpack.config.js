@@ -14,8 +14,7 @@ module.exports = {
     main: './src/pages/index/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    path: path.resolve(__dirname, 'dist')
   },
   resolve: {
     alias: {
@@ -24,7 +23,18 @@ module.exports = {
   },
   devServer: {
     open: true,
-    port: 8080
+    port: 8080,
+    compress: true,
+    proxy: {
+      '/api': {
+        target: 'http://172.20.3.183:30030',
+        pathRewrite: {
+          '^/api': ''
+        },
+        ws: false,
+        changeOrigin: true
+      }
+    }
   },
   module: {
     rules: [
