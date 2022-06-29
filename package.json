@@ -1,16 +1,18 @@
 {
-  "name": "demo-webpack5",
+  "name": "learning-webpack5",
   "version": "1.0.0",
   "description": "webpack5",
   "keywords": [
     "webpack5"
   ],
   "homepage": "",
-  "author": "fewabdboy <renekton.king@qq.com>",
+  "author": "fewbadboy <renekton.king@qq.com>",
   "scripts": {
-    "start": "webpack serve --open",
+    "start": "webpack serve",
     "build": "webpack",
+    "profile": "webpack --profile --json=compilation-state.json",
     "lint": "eslint --ext .js,.vue src",
+    "clean": "rm -rf dist",
     "test": "echo \"Error: for test\" && exit 1"
   },
   "dependencies": {
@@ -27,11 +29,11 @@
     "html-webpack-plugin": "^5.3.1",
     "json5": "^2.2.0",
     "sass": "^1.32.10",
-    "sass-loader": "^11.0.1",
-    "style-loader": "^2.0.0",
+    "sass-loader": "^13.0.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2",
+    "webpack-dev-server": "^4.9.2",
     "xml-loader": "^1.2.1",
     "yamljs": "^0.3.0"
   },

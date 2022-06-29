@@ -2,7 +2,6 @@ import _ from 'lodash'
 import '@/styles/index.scss'
 
 import printMe from '@/common/print.js'
-import puma from '@/images/puma.png'
 
 import csv from '@/Data/data.csv'
 import xml from '@/Data/data.xml'
@@ -33,3 +32,9 @@ document.body.appendChild(componentPng())
 
 localStorage.setItem('token', 'auth9527')
 console.log(process.env.BASE_URL)
+
+console.log(_.join(['Hello', 'webpack'], ' '))
+
+setTimeout(() => {
+  printMe()
+}, 10000)
