@@ -14,21 +14,22 @@ console.log(json.title) // output `JSON5 Example`
 
 console.log(csv)
 console.log(xml)
-function componnet() {
+console.log(process.env.VERSION)
+function component() {
   const element = document.createElement('div')
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
   element.classList.add('danger')
   element.onclick = printMe
   return element
 }
-function componnetPng() {
+function componentPng() {
   const element = document.createElement('img')
   element.src = puma
   return element
 }
 
-document.body.appendChild(componnet())
-document.body.appendChild(componnetPng())
+document.body.appendChild(component())
+document.body.appendChild(componentPng())
 
 localStorage.setItem('token', 'auth9527')
 console.log(process.env.BASE_URL)
