@@ -14,7 +14,8 @@ module.exports = {
     main: './src/pages/index/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist')
+    publicPath: '/webpack',
+    path: path.resolve(__dirname, 'webpack')
   },
   resolve: {
     alias: {
@@ -38,6 +39,12 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.jsx?$/i,
+        use: [
+          { loader: 'babel-loader' }
+        ]
+      },
       {
         test: /\.s?css$/i,
         use: [
