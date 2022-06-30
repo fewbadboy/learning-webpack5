@@ -41,6 +41,8 @@ setTimeout(() => {
   printMe()
 }, 10000)
 
+Promise.resolve().finally()
+
 console.log(1 === true)
 
 const app = ReactDOMClient.createRoot(document.getElementById('app'))
