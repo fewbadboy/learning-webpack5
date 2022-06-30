@@ -8,7 +8,6 @@
   "homepage": "",
   "author": "fewbadboy <renekton.king@qq.com>",
   "scripts": {
-    "prepare": "husky install",
     "start": "webpack serve",
     "build": "webpack",
     "profile": "webpack --profile --json=compilation-state.json",
