@@ -16,6 +16,17 @@ console.log(json.title) // output `JSON5 Example`
 
 console.log(csv)
 console.log(xml)
+console.log(process.env.VERSION)
+function component () {
+  const element = document.createElement('div')
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+  element.classList.add('danger')
+  element.onclick = printMe
+  return element
+}
+
+document.body.appendChild(component())
+
 localStorage.setItem('token', 'auth9527')
 console.log(process.env.BASE_URL)
 

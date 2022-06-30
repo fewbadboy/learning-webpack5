@@ -1,7 +1,7 @@
 {
   "name": "learning-webpack5",
   "version": "1.0.0",
-  "description": "webpack5 learning",
+  "description": "webpack5",
   "keywords": [
     "webpack5"
   ],
@@ -57,9 +57,8 @@
     "email": "renekton.king@qq.com"
   },
   "lint-staged": {
-    "src/**/*.{jsx,js}": [
-      "eslint --fix",
-      "git add"
+    "src/**/*.{js,jsx}": [
+      "eslint --fix"
     ]
   }
 }
