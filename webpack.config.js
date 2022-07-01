@@ -24,23 +24,22 @@ module.exports = {
   },
   devServer: {
     open: true,
-    port: 8080,
-    compress: true,
-    proxy: {
-      '/api': {
-        target: 'http://172.20.3.183:30030',
-        pathRewrite: {
-          '^/api': ''
-        },
-        ws: false,
-        changeOrigin: true
-      }
-    }
+    port: 8080
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://172.20.3.183:30030',
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     },
+    //     ws: false,
+    //     changeOrigin: true
+    //   }
+    // }
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/i,
+        test: /\.jsx?$/i,
         exclude: '/node_modules/',
         use: [
           {
