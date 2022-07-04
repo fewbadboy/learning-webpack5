@@ -8,7 +8,7 @@ const json5 = require('json5')
 
 module.exports = {
   name: 'Admin Webpack',
-  mode: 'development', // production
+  mode: 'development',
   entry: {
     about: './src/pages/about/about.js',
     main: './src/pages/index/index.js'
@@ -23,7 +23,13 @@ module.exports = {
     }
   },
   devServer: {
-    open: true,
+    open: {
+      target: ['/webpack'],
+      app: {
+        name: 'chrome',
+        arguments: ['--incognito', '--new-window']
+      }
+    },
     port: 8080
     // proxy: {
     //   '/api': {
@@ -40,12 +46,11 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/i,
-        exclude: '/node_modules/',
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-        ]
+        include: path.resolve(__dirname, 'src'),
+        loader: 'babel-loader',
+        options: {
+          // do
+        }
       },
       {
         test: /\.s?css$/i,
@@ -62,11 +67,17 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        generator: {
+          outputPath: 'images/'
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        generator: {
+          outputPath: 'font/'
+        }
       },
       {
         test: /\.(csv|tsv)$/i,
@@ -91,6 +102,9 @@ module.exports = {
         }
       }
     ]
+  },
+  externals: {
+    lodash: '_'
   },
   optimization: {
     splitChunks: {
