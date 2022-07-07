@@ -2,6 +2,8 @@ import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 import _ from 'lodash'
 
+import '../../icons'
+
 import '@/styles/index.scss'
 
 function component () {
@@ -19,5 +21,6 @@ app.render(
     <div>
       { _.join(['Hello', 'webpack'], ' ') }
     </div>
+    <img src={ new URL('../../images/puma.png', import.meta.url) } />
   </React.StrictMode>
 )

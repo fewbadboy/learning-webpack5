@@ -2,7 +2,8 @@ const pluginName = 'ConsoleLogOnBuildWebpackPlugin'
 class ConsoleLogOnBuildWebpackPlugin {
   apply(compiler) {
     compiler.hooks.run.tap(pluginName, (compilation) => {
-      console.log('The webpack build process is starting!')
+      const logger = compilation.getLogger(pluginName)
+      logger.log('The webpack build process is starting!')
     })
   }
 }

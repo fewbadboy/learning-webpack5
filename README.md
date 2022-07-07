@@ -1,5 +1,8 @@
 # demo-webpack5
 webpack5
+```shell
+npm install --registry=https://registry.npm.taobao.org
+```
 
 # Environment
 1. node v14.17.3

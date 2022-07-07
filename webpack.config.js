@@ -1,6 +1,5 @@
 const path = require('path')
 const { BannerPlugin, DefinePlugin } = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const yaml = require('yamljs')
@@ -46,10 +45,12 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/i,
-        include: path.resolve(__dirname, 'src'),
+        include: [
+          path.resolve(__dirname, 'src')
+        ],
         loader: 'babel-loader',
         options: {
-          // do
+          presets: ['es2021']
         }
       },
       {
@@ -67,7 +68,12 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024
+          }
+        },
         generator: {
           outputPath: 'images/'
         }
@@ -121,7 +127,6 @@ module.exports = {
     runtimeChunk: 'single'
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new DefinePlugin({
       'process.env': {
         BASE_URL: JSON.stringify('/'),
