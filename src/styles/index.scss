@@ -2,15 +2,23 @@
 
 
 @font-face {
-    font-family: 'LongCang-Regular';
-    src: url('@/fonts/LongCang-Regular.ttf');
+    font-family: 'EduTASBeginner';
+    src: url('@/fonts/EduTASBeginner-Regular.ttf');
 }
 .red {
-    font-family: 'LongCang-Regular';
+    font-family: 'EduTASBeginner';
     color: red;
     &:hover {
         cursor: pointer;
     }
+}
+
+.skill {
+    height: 80px;
+    background-image: url('@/images/skill.svg');
+    background-position: bottom 10px right 10px;
+    background-size: 40px;
+    background-repeat: no-repeat;
 }
 
 .btn {

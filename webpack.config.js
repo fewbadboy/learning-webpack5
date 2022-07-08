@@ -2,19 +2,23 @@ const path = require('path')
 const { BannerPlugin, DefinePlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const yaml = require('yamljs')
 const json5 = require('json5')
 
 module.exports = {
   name: 'Admin Webpack',
   mode: 'development',
   entry: {
-    about: './src/pages/about/about.js',
-    main: './src/pages/index/index.js'
+    main: {
+      import: './src/pages/index/index.js'
+    },
+    about: {
+      import: './src/pages/about/about.js'
+    }
   },
   output: {
     publicPath: '/webpack',
-    path: path.resolve(__dirname, 'webpack')
+    path: path.resolve(__dirname, 'webpack'),
+    clean: true
   },
   resolve: {
     alias: {
@@ -29,6 +33,7 @@ module.exports = {
         arguments: ['--incognito', '--new-window']
       }
     },
+    hot: true,
     port: 8080
     // proxy: {
     //   '/api': {
@@ -48,10 +53,7 @@ module.exports = {
         include: [
           path.resolve(__dirname, 'src')
         ],
-        loader: 'babel-loader',
-        options: {
-          presets: ['es2021']
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.s?css$/i,
@@ -67,37 +69,50 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpe?g|gif)(\?.*)?$/i,
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 8 * 1024
+            maxSize: 4 * 1024
           }
         },
         generator: {
-          outputPath: 'images/'
+          publicPath: 'webpack/static/images/',
+          outputPath: 'static/images/'
+        }
+      },
+      {
+        test: /\.(svg)(\?.*)?$/i,
+        type: 'asset',
+        exclude: [
+          path.resolve(__dirname, 'src/icons')
+        ],
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024
+          }
+        },
+        generator: {
+          publicPath: 'webpack/static/images/',
+          outputPath: 'static/images/'
+        }
+      },
+      {
+        test: /\.(svg)(\?.*)?$/i,
+        include: [
+          path.resolve(__dirname, 'src/icons')
+        ],
+        loader: 'svg-sprite-loader',
+        options: {
+          symbolId: 'icon-[name]'
         }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          outputPath: 'font/'
-        }
-      },
-      {
-        test: /\.(csv|tsv)$/i,
-        use: ['csv-loader']
-      },
-      {
-        test: /\.xml$/i,
-        use: ['xml-loader']
-      },
-      {
-        test: /\.yaml$/i,
-        type: 'json',
-        parser: {
-          parse: yaml.parse
+          publicPath: 'webpack/static/fonts/',
+          outputPath: 'static/fonts/'
         }
       },
       {

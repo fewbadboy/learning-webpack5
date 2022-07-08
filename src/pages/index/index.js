@@ -5,11 +5,12 @@ import _ from 'lodash'
 import '../../icons'
 
 import '@/styles/index.scss'
+import img from '@/images/who.png'
 
 function component () {
   const element = document.createElement('div')
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
-  element.classList.add('danger')
+  element.classList.add('red')
   return element
 }
 
@@ -19,8 +20,12 @@ const app = ReactDOMClient.createRoot(document.getElementById('app'))
 app.render(
   <React.StrictMode>
     <div>
-      { _.join(['Hello', 'webpack'], ' ') }
+      { _.join(['Hello', 'Index', process.env.NODE_ENV], ' ') }
     </div>
-    <img src={ new URL('../../images/puma.png', import.meta.url) } />
+    <svg>
+      <use xlinkHref="#icon-bug" />
+    </svg>
+    <img src={ img } />
+    <div className='skill'>测试</div>
   </React.StrictMode>
 )
