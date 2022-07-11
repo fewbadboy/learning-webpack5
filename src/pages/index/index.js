@@ -6,7 +6,7 @@ import '../../icons'
 
 import '@/styles/index.scss'
 import img from '@/images/who.png'
-
+console.log(_.head(['head', 'tail']))
 function component () {
   const element = document.createElement('div')
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
@@ -26,6 +26,7 @@ app.render(
       <use xlinkHref="#icon-bug" />
     </svg>
     <img src={ img } />
+    <img src={ new URL('../../images/skill.svg', import.meta.url) } />
     <div className='skill'>测试</div>
   </React.StrictMode>
 )

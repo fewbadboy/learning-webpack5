@@ -26,15 +26,39 @@ module.exports = {
     }
   },
   devServer: {
+    headers: [
+      {
+        key: 'X-Custom-Foo',
+        value: 'foo'
+      }
+    ],
     open: {
       target: ['/webpack'],
       app: {
-        name: 'chrome',
+        name: 'chrome', // macOS: Google Chrome Linux: google-chrome Windows: chrome
         arguments: ['--incognito', '--new-window']
       }
     },
-    hot: true,
     port: 8080
+    // setupMiddlewares: (middlewares, devServer) => {
+    //   devServer.app.get('/some/path', (_, response) => {
+    //     response.send('setup-middlewares options GET')
+    //   })
+    //   middlewares.unshift({
+    //     name: 'first-in-array',
+    //     path: '/first',
+    //     middleware: (req, res) => {
+    //       res.send('first')
+    //     }
+    //   })
+    //   middlewares.push({
+    //     name: 'last-in-array',
+    //     path: '/last',
+    //     middleware: (req, res) => {
+    //       res.send('last')
+    //     }
+    //   })
+    // }
     // proxy: {
     //   '/api': {
     //     target: 'http://172.20.3.183:30030',
@@ -124,8 +148,12 @@ module.exports = {
       }
     ]
   },
+  externalsType: 'script',
   externals: {
-    lodash: '_'
+    lodash: [
+      'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js',
+      '_'
+    ]
   },
   optimization: {
     splitChunks: {
