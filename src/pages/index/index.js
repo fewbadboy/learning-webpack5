@@ -1,6 +1,7 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 import _ from 'lodash'
+import { printMe } from '@/print'
 
 import '../../icons'
 
@@ -11,6 +12,12 @@ function component () {
   const element = document.createElement('div')
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
   element.classList.add('red')
+
+  const btn = document.createElement('button')
+  btn.innerHTML = 'Click then check the console!'
+  btn.onclick = printMe
+  element.append(btn)
+
   return element
 }
 

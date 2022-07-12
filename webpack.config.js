@@ -13,7 +13,8 @@ module.exports = {
     },
     about: {
       import: './src/pages/about/about.js'
-    }
+    },
+    print: './src/print.js'
   },
   output: {
     publicPath: '/webpack',
@@ -169,6 +170,7 @@ module.exports = {
     },
     runtimeChunk: 'single'
   },
+  devtool: 'inline-source-map',
   plugins: [
     new DefinePlugin({
       'process.env': {
