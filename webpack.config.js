@@ -19,6 +19,7 @@ module.exports = {
   output: {
     publicPath: '/webpack',
     path: path.resolve(__dirname, 'webpack'),
+    filename: '[name].[contenthash].js',
     clean: true
   },
   resolve: {
@@ -102,7 +103,7 @@ module.exports = {
           }
         },
         generator: {
-          publicPath: 'webpack/static/images/',
+          publicPath: '/webpack/static/images/',
           outputPath: 'static/images/'
         }
       },
@@ -118,7 +119,7 @@ module.exports = {
           }
         },
         generator: {
-          publicPath: 'webpack/static/images/',
+          publicPath: '/webpack/static/images/',
           outputPath: 'static/images/'
         }
       },
@@ -136,7 +137,7 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          publicPath: 'webpack/static/fonts/',
+          publicPath: '/webpack/static/fonts/',
           outputPath: 'static/fonts/'
         }
       },
@@ -157,6 +158,7 @@ module.exports = {
     ]
   },
   optimization: {
+    moduleIds: 'deterministic',
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
