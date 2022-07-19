@@ -6,7 +6,7 @@ const json5 = require('json5')
 
 module.exports = {
   name: 'Admin Webpack',
-  mode: 'development',
+  mode: 'development', // 'production'
   entry: {
     main: {
       import: './src/pages/index/index.js'
@@ -20,9 +20,11 @@ module.exports = {
     publicPath: '/webpack',
     path: path.resolve(__dirname, 'webpack'),
     filename: '[name].[contenthash].js',
+    pathinfo: false,
     clean: true
   },
   resolve: {
+    symlinks: false,
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
@@ -172,7 +174,6 @@ module.exports = {
     },
     runtimeChunk: 'single'
   },
-  devtool: 'inline-source-map',
   plugins: [
     new DefinePlugin({
       'process.env': {
