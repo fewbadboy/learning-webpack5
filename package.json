@@ -9,8 +9,8 @@
   "author": "fewbadboy <renekton.king@qq.com>",
   "scripts": {
     "prepare": "husky install",
-    "serve": "webpack serve",
-    "build": "webpack",
+    "serve": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "lint": "eslint --ext .js,.vue src",
     "clean": "rm -rf webpack",
     "test": "echo \"Error: for test\" && exit 1"
@@ -45,9 +45,12 @@
     "style-loader": "^3.3.1",
     "svg-sprite-loader": "^6.0.11",
     "svgo": "^2.8.0",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^4.9.2"
+    "webpack-dev-server": "^4.9.2",
+    "webpack-merge": "^5.8.0"
   },
   "bugs": {
     "url": "https://github.com/fewbadboy/demo-webpack5/issues",

@@ -6,3 +6,8 @@ export function printMe() {
 export function treeShaking() {
   console.log('Tree Shaking!!')
 }
+
+export default () => {
+  printMe()
+  console.log('Export Default!!')
+}

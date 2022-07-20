@@ -1,7 +1,7 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 import _ from 'lodash'
-import { printMe } from '@/print'
+import { Say } from '@/main'
 
 import '../../icons'
 
@@ -15,14 +15,17 @@ function component () {
 
   const btn = document.createElement('button')
   btn.innerHTML = 'Click then check the console!'
-  btn.onclick = printMe
+  btn.onclick = e => import('@/print').then(module => {
+    const print = module.default
+    print()
+    console.log(e)
+  })
   element.append(btn)
 
   return element
 }
-
 document.body.appendChild(component())
-
+console.log(Say({name: 'JS'}))
 const app = ReactDOMClient.createRoot(document.getElementById('app'))
 app.render(
   <React.StrictMode>
