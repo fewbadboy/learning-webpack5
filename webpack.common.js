@@ -64,7 +64,7 @@ module.exports = {
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 4 * 1024
+            maxSize: 8 * 1024 // default: 8kb
           }
         },
         generator: {
@@ -78,11 +78,6 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, 'src/icons')
         ],
-        parser: {
-          dataUrlCondition: {
-            maxSize: 4 * 1024
-          }
-        },
         generator: {
           publicPath: '/webpack/static/images/',
           outputPath: 'static/images/'
@@ -105,6 +100,10 @@ module.exports = {
           publicPath: '/webpack/static/fonts/',
           outputPath: 'static/fonts/'
         }
+      },
+      {
+        resourceQuery: '/file/',
+        type: 'asset/resource'
       },
       {
         test: /\.json5$/i,
