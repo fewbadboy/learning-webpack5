@@ -1,7 +1,8 @@
 const path = require('path')
-const { BannerPlugin, DefinePlugin, ProvidePlugin } = require('webpack')
+const { DefinePlugin, ProvidePlugin } = require('webpack')
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const devMode = process.env.NODE_ENV !== 'production'
 const json5 = require('json5')
 
 module.exports = {
@@ -32,10 +33,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/i,
-        include: [
-          path.resolve(__dirname, 'src')
-        ],
+        test: /\.m?jsx?$/i,
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
@@ -49,12 +48,9 @@ module.exports = {
           path.resolve(__dirname, 'src')
         ],
         use: [
-          { loader: 'style-loader' },
+          { loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
-            options: {
-              // do
-            }
           },
           { loader: 'sass-loader' }
         ]
@@ -149,10 +145,10 @@ module.exports = {
         VERSION: JSON.stringify('5fa3b9')
       }
     }),
-    new BannerPlugin({
-      banner: `Author: fewbadboy \nTime: ${new Date().toLocaleString()}`
-    }),
     new HtmlWebpackPlugin({
+      meta: {
+        'theme-color': '#4285f4'
+      },
       title: 'index',
       filename: 'index.html',
       template: './public/index.html',
