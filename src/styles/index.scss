@@ -40,7 +40,21 @@
         cursor: pointer;
     }
 }
-
+.svg-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+.icon-danger {
+    color: red;
+}
+.drop-image {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #2ff;
+}
 .skill {
     height: 80px;
     background-image: url('@/images/skill.svg');
@@ -55,7 +69,11 @@
             size: 14px;
             weight: bold;
         }
+        line-height: 22px;
+        padding: 4px;
+        margin: 0 4px;
         color: $color-primary;
+        border: 1px solid #2ff;
         &:hover{
             color: $color-primary-hover;
         }
