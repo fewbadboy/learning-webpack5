@@ -119,10 +119,16 @@ class Form extends React.Component {
     e.stopPropagation()
     e.preventDefault()
     const dt = e.dataTransfer
+    console.log(dt)
     const files = dt.files
     this.setState({
       uploadFile: URL.createObjectURL(files[0])
     })
+  }
+
+  handleDragOver = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
   }
 
   render() {
@@ -140,6 +146,9 @@ class Form extends React.Component {
           </form>
           <img src={ this.state.uploadFile } />
           <input type='file' onDrop={this.handleDrop} />
+          <div  className='drop-image' onDragOver={this.handleDragOver} onDrop={this.handleDrop}>
+            test
+          </div>
         </div>
         : null
     )
