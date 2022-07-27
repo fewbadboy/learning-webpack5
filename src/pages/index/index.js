@@ -93,6 +93,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = { show: true, value: '', uploadFile: '' }
+    this.inputFile = React.createRef()
   }
 
   handleSubmit = (e) => {
@@ -131,6 +132,10 @@ class Form extends React.Component {
     e.preventDefault()
   }
 
+  handleFile = () => {
+    this.inputFile.current.click()
+  }
+
   render() {
     return(
       this.state.show ?
@@ -145,8 +150,8 @@ class Form extends React.Component {
             <button type='submit'>submit</button>
           </form>
           <img src={ this.state.uploadFile } />
-          <input type='file' onDrop={this.handleDrop} />
-          <div  className='drop-image' onDragOver={this.handleDragOver} onDrop={this.handleDrop}>
+          <input type='file' ref={this.inputFile} onDrop={this.handleDrop} style={{'display': 'none'}} />
+          <div  className='drop-image' onClick={this.handleFile} onDragOver={this.handleDragOver} onDrop={this.handleDrop}>
             test
           </div>
         </div>
