@@ -40,6 +40,7 @@
         cursor: pointer;
     }
 }
+
 .svg-icon {
     width: 1em;
     height: 1em;
@@ -47,15 +48,18 @@
     fill: currentColor;
     overflow: hidden;
 }
+
 .icon-danger {
     color: red;
 }
+
 .drop-image {
     width: 100px;
     height: 100px;
     border: 1px solid #2ff;
     cursor:grab;
 }
+
 .skill {
     height: 80px;
     background-image: url('@/images/skill.svg');

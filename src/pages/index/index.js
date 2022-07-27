@@ -145,7 +145,7 @@ class Form extends React.Component {
               账号：<input type='text' name='name' autoComplete='off' value={this.state.value} onChange={this.handleChange} />
             </label>
             <label>
-              文件：<input type='file' id='file' />
+              文件：<input type='file' id='file' name='file' />
             </label>
             <button type='submit'>submit</button>
           </form>
