@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
@@ -11,12 +11,14 @@ class Webpack extends React.Component {
 
   static propTypes = {
     increment: PropTypes.number,
-    message: PropTypes.array
+    message: PropTypes.array,
+    children: PropTypes.node
   }
 
   static defaultProps = {
     increment: 1,
-    message: []
+    message: [],
+    children: null
   }
 
   constructor(props) {
@@ -83,6 +85,7 @@ class Webpack extends React.Component {
         <ul>
           { this.props.message.map((item,index) => <li key={index}>{ item }</li>)}
         </ul>
+        { this.props.children }
       </div>
     )
   }
@@ -161,15 +164,20 @@ class Form extends React.Component {
 }
 
 const app = ReactDOMClient.createRoot(document.getElementById('app'))
-
+const BigText = React.lazy(() => import('@/components/BigText'))
 app.render(
   <React.StrictMode>
-    <Webpack message={ ['Hello', 'webpack'] } />
+    <Webpack message={ ['Hello', 'webpack'] }>
+      <article>雪山飞狐</article>
+    </Webpack>
     <Form />
     <svg className='svg-icon icon-danger'>
       <use xlinkHref="#icon-bug" />
     </svg>
     <img src={ new URL('../../images/skill.svg', import.meta.url) } />
     <div className='skill'>测试</div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <BigText>程灵素</BigText>
+    </Suspense>
   </React.StrictMode>
 )
